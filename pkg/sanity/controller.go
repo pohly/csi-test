@@ -210,7 +210,7 @@ var _ = DescribeSanity("CreateVolume [Controller Server]", func(sc *SanityContex
 	It("should return appropriate values SingleNodeWriter NoCapacity Type:Mount", func() {
 
 		By("creating a volume")
-		name := "sanity"
+		name := "sanity-controller-create-single-no-capacity"
 
 		req := &csi.CreateVolumeRequest{
 			Name: name,
@@ -253,7 +253,7 @@ var _ = DescribeSanity("CreateVolume [Controller Server]", func(sc *SanityContex
 	It("should return appropriate values SingleNodeWriter WithCapacity 1Gi Type:Mount", func() {
 
 		By("creating a volume")
-		name := "sanity"
+		name := "sanity-controller-create-single-with-capacity"
 
 		req := &csi.CreateVolumeRequest{
 			Name: name,
@@ -307,7 +307,7 @@ var _ = DescribeSanity("CreateVolume [Controller Server]", func(sc *SanityContex
 	It("should not fail when requesting to create a volume with already exisiting name and same capacity.", func() {
 
 		By("creating a volume")
-		name := "sanity"
+		name := "sanity-controller-create-twice"
 		size := TestVolumeSize(sc)
 
 		req := &csi.CreateVolumeRequest{
@@ -383,7 +383,7 @@ var _ = DescribeSanity("CreateVolume [Controller Server]", func(sc *SanityContex
 	It("should fail when requesting to create a volume with already exisiting name and different capacity.", func() {
 
 		By("creating a volume")
-		name := "sanity"
+		name := "sanity-controller-create-twice-different"
 		size1 := TestVolumeSize(sc)
 
 		req := &csi.CreateVolumeRequest{
@@ -505,7 +505,7 @@ var _ = DescribeSanity("DeleteVolume [Controller Server]", func(sc *SanityContex
 
 		// Create Volume First
 		By("creating a volume")
-		name := "sanity"
+		name := "sanity-controller-create-appropriate"
 
 		createReq := &csi.CreateVolumeRequest{
 			Name: name,
@@ -587,7 +587,7 @@ var _ = DescribeSanity("ValidateVolumeCapabilities [Controller Server]", func(sc
 
 		// Create Volume First
 		By("creating a single node writer volume")
-		name := "sanity"
+		name := "sanity-controller-validate"
 
 		req := &csi.CreateVolumeRequest{
 			Name: name,
@@ -746,7 +746,7 @@ var _ = DescribeSanity("ControllerPublishVolume [Controller Server]", func(sc *S
 
 		// Create Volume First
 		By("creating a single node writer volume")
-		name := "sanity"
+		name := "sanity-controller-publish"
 		req := &csi.CreateVolumeRequest{
 			Name: name,
 			VolumeCapabilities: []*csi.VolumeCapability{
@@ -869,7 +869,7 @@ var _ = DescribeSanity("ControllerPublishVolume [Controller Server]", func(sc *S
 
 		// Create Volume First
 		By("creating a single node writer volume")
-		name := "sanity"
+		name := "sanity-controller-wrong-node"
 		req := &csi.CreateVolumeRequest{
 			Name: name,
 			VolumeCapabilities: []*csi.VolumeCapability{
@@ -941,7 +941,7 @@ var _ = DescribeSanity("ControllerPublishVolume [Controller Server]", func(sc *S
 
 		// Create Volume First
 		By("creating a single node writer volume")
-		name := "sanity"
+		name := "sanity-controller-published-incompatible"
 		req := &csi.CreateVolumeRequest{
 			Name: name,
 			VolumeCapabilities: []*csi.VolumeCapability{
@@ -1076,7 +1076,7 @@ var _ = DescribeSanity("ControllerUnpublishVolume [Controller Server]", func(sc 
 
 		// Create Volume First
 		By("creating a single node writer volume")
-		name := "sanity"
+		name := "sanity-controller-unpublish"
 
 		req := &csi.CreateVolumeRequest{
 			Name: name,
