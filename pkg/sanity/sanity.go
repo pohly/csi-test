@@ -127,6 +127,15 @@ type Config struct {
 	IDGen IDGenerator
 }
 
+// GetIDGen always returns a valid ID generator. If none is set in the configuration,
+// then the DefaultIDGenerator is returned.
+func (c Config) GetIDGen() IDGenerator {
+	if c.IDGen != nil {
+		return c.IDGen
+	}
+	return &DefaultIDGenerator{}
+}
+
 // SanityContext holds the variables that each test can depend on. It
 // gets initialized before each test block runs.
 type SanityContext struct {
@@ -156,10 +165,6 @@ func Test(t *testing.T, reqConfig *Config) {
 		if err != nil {
 			panic(fmt.Sprintf("error unmarshaling yaml: %v", err))
 		}
-	}
-
-	if reqConfig.IDGen == nil {
-		reqConfig.IDGen = &DefaultIDGenerator{}
 	}
 
 	sc := &SanityContext{

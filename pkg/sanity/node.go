@@ -187,7 +187,7 @@ var _ = DescribeSanity("Node Service", func(sc *SanityContext) {
 			_, err := c.NodePublishVolume(
 				context.Background(),
 				&csi.NodePublishVolumeRequest{
-					VolumeId: sc.Config.IDGen.GenerateUniqueValidVolumeID(),
+					VolumeId: sc.Config.GetIDGen().GenerateUniqueValidVolumeID(),
 					Secrets:  sc.Secrets.NodePublishVolumeSecret,
 				},
 			)
@@ -202,7 +202,7 @@ var _ = DescribeSanity("Node Service", func(sc *SanityContext) {
 			_, err := c.NodePublishVolume(
 				context.Background(),
 				&csi.NodePublishVolumeRequest{
-					VolumeId:   sc.Config.IDGen.GenerateUniqueValidVolumeID(),
+					VolumeId:   sc.Config.GetIDGen().GenerateUniqueValidVolumeID(),
 					TargetPath: sc.TargetPath + "/target",
 					Secrets:    sc.Secrets.NodePublishVolumeSecret,
 				},
@@ -233,7 +233,7 @@ var _ = DescribeSanity("Node Service", func(sc *SanityContext) {
 			_, err := c.NodeUnpublishVolume(
 				context.Background(),
 				&csi.NodeUnpublishVolumeRequest{
-					VolumeId: sc.Config.IDGen.GenerateUniqueValidVolumeID(),
+					VolumeId: sc.Config.GetIDGen().GenerateUniqueValidVolumeID(),
 				})
 			Expect(err).To(HaveOccurred())
 
@@ -286,7 +286,7 @@ var _ = DescribeSanity("Node Service", func(sc *SanityContext) {
 			_, err := c.NodeStageVolume(
 				context.Background(),
 				&csi.NodeStageVolumeRequest{
-					VolumeId: sc.Config.IDGen.GenerateUniqueValidVolumeID(),
+					VolumeId: sc.Config.GetIDGen().GenerateUniqueValidVolumeID(),
 					VolumeCapability: &csi.VolumeCapability{
 						AccessType: &csi.VolumeCapability_Mount{
 							Mount: &csi.VolumeCapability_MountVolume{},
@@ -395,7 +395,7 @@ var _ = DescribeSanity("Node Service", func(sc *SanityContext) {
 			_, err := c.NodeUnstageVolume(
 				context.Background(),
 				&csi.NodeUnstageVolumeRequest{
-					VolumeId: sc.Config.IDGen.GenerateUniqueValidVolumeID(),
+					VolumeId: sc.Config.GetIDGen().GenerateUniqueValidVolumeID(),
 				})
 			Expect(err).To(HaveOccurred())
 
@@ -430,7 +430,7 @@ var _ = DescribeSanity("Node Service", func(sc *SanityContext) {
 			_, err := c.NodeGetVolumeStats(
 				context.Background(),
 				&csi.NodeGetVolumeStatsRequest{
-					VolumeId: sc.Config.IDGen.GenerateUniqueValidVolumeID(),
+					VolumeId: sc.Config.GetIDGen().GenerateUniqueValidVolumeID(),
 				},
 			)
 			Expect(err).To(HaveOccurred())
@@ -444,7 +444,7 @@ var _ = DescribeSanity("Node Service", func(sc *SanityContext) {
 			_, err := c.NodeGetVolumeStats(
 				context.Background(),
 				&csi.NodeGetVolumeStatsRequest{
-					VolumeId:   sc.Config.IDGen.GenerateUniqueValidVolumeID(),
+					VolumeId:   sc.Config.GetIDGen().GenerateUniqueValidVolumeID(),
 					VolumePath: "some/path",
 				},
 			)
